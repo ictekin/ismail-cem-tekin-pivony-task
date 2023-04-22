@@ -31,7 +31,7 @@ const FilterCard = () => {
   const filters = useSelector((state) => state.filters);
   const [isHovering, setIsHovering] = useState(false);
   const [id, setId] = useState(0);
-  const [groupId, setGroupId] = useState(0);
+  const [groupId, setGroupId] = useState(10);
   const [a, setA] = useState(false);
 
   const addNewFilter = () => {
@@ -85,14 +85,15 @@ const FilterCard = () => {
                     index={element.id}
                     deleteSelectedIndex={removeSelectedFilter}
                   />
-                  {element.hasOwnProperty("groupFilters") && (
-                    <FilterCardSub
-                      key={element.groupFilters.id}
-                      index={element.groupFilters.id}
-                      groupFilters={element.groupFilters}
-                      deleteSelectedIndex={removeSelectedFilter}
-                    />
-                  )}
+                  {element.groupFilters &&
+                    element.hasOwnProperty("groupFilters") && (
+                      <FilterCardSub
+                        key={element.id}
+                        index={element.id}
+                        groupFilters={element.groupFilters}
+                        deleteSelectedIndex={removeSelectedFilter}
+                      />
+                    )}
                 </>
               );
             })}

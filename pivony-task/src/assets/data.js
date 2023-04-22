@@ -1,17 +1,4 @@
-export const data = [
-  "Status",
-  "Tags",
-  "Due Data",
-  "Priority",
-  "Assignee",
-  "Archived",
-  "Assigned comment",
-  "Created by",
-  "Date closed",
-  "Date updated",
-  "Date Done",
-  "Dependency",
-];
+export const data = ["Status", "Tags", "Priority"];
 
 export const data2 = ["Is", "Is not", "Is set", "Is not set"];
 

@@ -8,15 +8,24 @@ import GroupFilterRow from "./GroupFilterRow";
 //Icons
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 
-import { removeFilter, addGroupFilter } from "../../slices/filterSlice";
+import {
+  removeFilter,
+  addFilterIntoGroupFilter,
+} from "../../slices/filterSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const FilterCard = ({ index, groupFilters }) => {
+const FilterCard = ({ index, groupFilters, deleteSelectedIndex }) => {
   const dispatch = useDispatch();
-
-  //   const addNewGroup = () => {
-  //     dispatch(addGroupFilter({ id: index, name: "" }));
-  //   };
+  console.log(index);
+  const addNewGroup = () => {
+    dispatch(
+      addFilterIntoGroupFilter({
+        id: groupFilters[0].id,
+        groupId: groupFilters[0].groupId,
+        name: "",
+      })
+    );
+  };
 
   const removeSelectedFilter = (index) => {
     dispatch(removeFilter(index));
@@ -34,16 +43,15 @@ const FilterCard = ({ index, groupFilters }) => {
             />
           );
         })}
-
-        {/* <Chip
+        <Chip
           size="small"
           label="Add filter"
           icon={<AddOutlinedIcon />}
           onClick={addNewGroup}
           sx={{
-            margin: "5px",
+            margin: "5px 110px",
           }}
-        /> */}
+        />
       </Box>
     </Box>
   );

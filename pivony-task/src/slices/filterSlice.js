@@ -14,11 +14,15 @@ export const filterSlice = createSlice({
       state[id - 1] = {
         id: state[id - 1].id,
         name: state[id - 1].name,
-        groupFilters: [action.payload],
+        groupFilters: action.payload,
       };
     },
     removeFilter: (state, action) => {
       return state.filter((item) => action.payload !== item.id);
+    },
+
+    addFilterIntoGroupFilter: (state, action) => {
+      state[action.payload.id - 1].groupFilters.push(action.payload);
     },
     removeGroupFilter: (state, action) => {},
     updateFilter: (state, action) => {
@@ -35,5 +39,6 @@ export const { addFilter } = filterSlice.actions;
 export const { removeFilter } = filterSlice.actions;
 export const { updateFilter } = filterSlice.actions;
 export const { addGroupFilter } = filterSlice.actions;
+export const { addFilterIntoGroupFilter } = filterSlice.actions;
 
 export default filterSlice.reducer;
